@@ -5,7 +5,7 @@ Created on Wed May  5 19:29:57 2021
 @author: RISHBANS
 """
 #Implement KNN from scratch
-
+#one_data is the new data point for which we are doing prediction
 import pandas as pd
 import numpy as np
 from sklearn.datasets import load_iris
@@ -30,7 +30,7 @@ class MyKNN:
         distances = np.sqrt(np.sum(np.square(self.feature_data - one_data), axis = 1))
         return distances
     
-    #Sort the distance and take min value (k)
+    #Sort the distance and take min value (k), returns index of the distance
     def find_k_neighbours(self, one_data_feature):
         res = self.calculate_distance_vector(one_data_feature)
         return res.argsort()[:self.k]
@@ -52,7 +52,7 @@ target_data = df.type
 
 model.my_fit(feature_data, target_data)    
 
-one_data = [1,2,3,4]
+one_data = [4,2,3,1]
 model.find_k_neighbours_index(one_data)  
 print(model.my_predict(one_data))  
     
