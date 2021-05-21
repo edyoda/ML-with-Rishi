@@ -48,7 +48,7 @@ plt.ylabel('price')
 plt.legend()
 plt.show()
 
-li_model.score(X_test, y_test)
+print(li_model.score(X_test, y_test))
 
 predictors = X_train.columns
 coef = pd.Series(li_model.coef_, predictors).sort_values()
@@ -60,7 +60,7 @@ coef.plot(kind='bar')
 from sklearn.linear_model import Lasso
 lasso_model = Lasso(alpha = 2, normalize = True)
 lasso_model.fit(X_train, y_train)
-lasso_model.score(X_train, y_train)
+print(lasso_model.score(X_train, y_train))
 
 predictors = X_train.columns
 coef = pd.Series(lasso_model.coef_, predictors).sort_values()
@@ -70,7 +70,7 @@ coef.plot(kind='bar')
 
 
 y_pred = lasso_model.predict(X_test)
-lasso_model.score(X_test, y_test)
+print(lasso_model.score(X_test, y_test))
 
 
 import matplotlib.pyplot as plt
@@ -80,6 +80,22 @@ plt.ylabel('lasso - price')
 plt.legend()
 plt.show()
 
+
+#Ridge Regression
+from sklearn.linear_model import Ridge
+ridge_model = Ridge(alpha = 2, normalize = True)
+ridge_model.fit(X_train, y_train)
+ridge_model.score(X_train, y_train)
+
+predictors = X_train.columns
+coef = pd.Series(ridge_model.coef_, predictors).sort_values()
+print(coef)
+
+
+coef.plot(kind='bar', title='Ridge Regression')
+
+y_pred_ridge = ridge_model.predict(X_test)
+print(ridge_model.score(X_test, y_test))
 
 
 
