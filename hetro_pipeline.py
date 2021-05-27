@@ -23,6 +23,7 @@ from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.compose import make_column_transformer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
 
 obj1_pipeline = make_pipeline(OrdinalEncoder())
 obj2_pipeline = make_pipeline(OneHotEncoder())
@@ -35,7 +36,7 @@ preprocessor = make_column_transformer(
                remainder = 'passthrough'    
     )
 
-m_pipeline = make_pipeline(preprocessor, RandomForestClassifier())
+m_pipeline = make_pipeline(preprocessor, DecisionTreeClassifier())
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
@@ -54,7 +55,6 @@ gs.fit(X_train, y_train)
 print(gs.best_params_)
 print(gs.best_score_)
 print(gs.score(X_test, y_test))
-
 
 
 
