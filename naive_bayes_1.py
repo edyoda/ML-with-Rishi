@@ -12,7 +12,7 @@ y = dataset.author
 
 #Text Preprocessing
 from nltk.tokenize import RegexpTokenizer
-tokenizer = RegexpTokenizer(r'\s[A-Za-z]+\s')
+tokenizer = RegexpTokenizer(r'[A-Za-z]+')
 
 dataset['text_tokenized'] = dataset.text.map(lambda t: tokenizer.tokenize(t))
 
